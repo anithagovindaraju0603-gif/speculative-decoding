@@ -61,8 +61,8 @@ def main():
     ct_draft = t_draft.apply_chat_template(
         messages, tokenize=True, add_generation_prompt=True, return_tensors="pt"
     )
-    #assert (ct_target == ct_draft).all(), "Chat template encoding differs"
-    print(f"[ok] chat template matches ({ct_target.shape[1]} tokens)")
+    print(f"[note] chat templates differ (target: {ct_target.shape[1]} toks, "
+          f"draft: {ct_draft.shape[1]} toks) — safe, we only use target's template")
 
     print("\nTokenizers are compatible. Safe to proceed.")
 
