@@ -1,5 +1,5 @@
 import torch
-from models import load_pair
+from model import load_pair
 from spec_decode_vanilla import speculative_decode
 
 print("Loading models...")
