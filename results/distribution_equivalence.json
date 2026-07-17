@@ -1,0 +1,38 @@
+[
+  {
+    "prompt": "The capital of France is",
+    "kl_divergence": 0.0013691484928131104,
+    "unique_token_overlap": 1.0,
+    "baseline_mode": "Paris",
+    "spec_mode": "Paris",
+    "baseline_unique_count": 3,
+    "spec_unique_count": 3
+  },
+  {
+    "prompt": "def fibonacci(n):",
+    "kl_divergence": 0.012294016778469086,
+    "unique_token_overlap": 0.8333333333333334,
+    "baseline_mode": "The",
+    "spec_mode": "The",
+    "baseline_unique_count": 6,
+    "spec_unique_count": 5
+  },
+  {
+    "prompt": "The quick brown fox",
+    "kl_divergence": 0.003715232014656067,
+    "unique_token_overlap": 0.6666666666666666,
+    "baseline_mode": "The",
+    "spec_mode": "The",
+    "baseline_unique_count": 3,
+    "spec_unique_count": 2
+  },
+  {
+    "prompt": "Once upon a time",
+    "kl_divergence": 0.31398487091064453,
+    "unique_token_overlap": 0.5454545454545454,
+    "baseline_mode": "It",
+    "spec_mode": "It",
+    "baseline_unique_count": 8,
+    "spec_unique_count": 9
+  }
+]

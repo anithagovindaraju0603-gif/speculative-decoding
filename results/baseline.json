@@ -1,0 +1,103 @@
+{
+  "config": {
+    "model": "meta-llama/Meta-Llama-3-8B-Instruct",
+    "dtype": "torch.bfloat16",
+    "max_new_tokens": 256,
+    "temperature": 0.7,
+    "seed": 0
+  },
+  "summary": {
+    "median_tokens_per_sec": 52.80003979033776,
+    "mean_tokens_per_sec": 52.79782604420033
+  },
+  "results": [
+    {
+      "prompt": "What is the capital of France, and what is it best known for?",
+      "output_text": "The capital of France is Paris, and it is one of the most famous and iconic cities in the world. Paris is known for its stunning architecture, art, fashion, cuisine, and romantic atmosphere. Here are some of the things that Paris is most famous for:\n\n1. The Eiffel Tower: The Eiffel Tower is one of the most recognizable landmarks in the world and is often considered the symbol of Paris. It was built for the 1889 World's Fair and stands 324 meters tall.\n2. The Louvre Museum: The Louvre is one of the world's largest and most famous museums, housing an impressive collection of art and artifacts from around the world, including the Mona Lisa.\n3. Notre-Dame Cathedral: Notre-Dame Cathedral is a beautiful Gothic church that dates back to the 12th century and is considered one of the most iconic landmarks in Paris.\n4. Arc de Triomphe: The Arc de Triomphe is a monumental arch that honors the soldiers who fought and died for France and is a popular spot for tourists to take in the views of the city.\n5. Montmartre: Montmartre is a historic neighborhood in Paris that is known for its bohemian vibe, charming streets, and stunning views of",
+      "prompt_len": 26,
+      "tokens_generated": 256,
+      "prefill_time": 0.023699219804257154,
+      "decode_time": 4.829844505991787,
+      "tokens_per_sec": 52.796730760928895,
+      "ms_per_token": 18.94056669016387,
+      "category": "factual"
+    },
+    {
+      "prompt": "Explain in one paragraph how photosynthesis works.",
+      "output_text": "Photosynthesis is the process by which plants, algae, and some bacteria convert light energy from the sun into chemical energy in the form of glucose. It occurs in specialized organelles called chloroplasts, which contain the pigment chlorophyll. Chlorophyll absorbs light energy from the sun, which excites electrons that are then transferred to a molecule called ATP, generating energy. This energy is used to convert carbon dioxide and water into glucose and oxygen through a series of chemical reactions. The glucose is then used by the plant as a source of energy and building block for growth and development, while the oxygen is released into the atmosphere as a byproduct. Overall, photosynthesis is essential for life on Earth, as it provides the energy and organic compounds necessary to support the food chain.",
+      "prompt_len": 21,
+      "tokens_generated": 158,
+      "prefill_time": 0.02139765163883567,
+      "decode_time": 2.968302892986685,
+      "tokens_per_sec": 52.8921763243736,
+      "ms_per_token": 18.906387853418376,
+      "category": "factual"
+    },
+    {
+      "prompt": "Write a short story about a lighthouse keeper who receives a mysterious letter.",
+      "output_text": "The lighthouse stood tall and proud on the rocky coast, its beam cutting through the darkness like a shining sentinel. Keeper James had lived in the small cottage at its base for nigh on 20 years, and he knew every creak of the old wooden stairs, every groan of the rusty pipes. He was used to the solitude, the only sound being the crash of the waves against the rocks and the occasional cry of a seagull.\n\nBut on this particular evening, James received a letter. He was sitting in his armchair, reading the evening paper by the fire, when the postman arrived with the day's mail. James's eyes scanned the envelopes, his mind wandering as he sorted through the bills and catalogues, when one letter caught his eye. It was addressed to him, but there was no return address.\n\nJames felt a shiver run down his spine as he turned the letter over in his hand. It was old-fashioned, with a wax seal bearing the image of a lighthouse. He broke the seal and unfolded the paper, his eyes scanning the contents.\n\nThe letter was written in elegant script, the words flowing across the page like a dark, liquid stream. It began by addressing James by name, and then went on to speak of",
+      "prompt_len": 26,
+      "tokens_generated": 256,
+      "prefill_time": 0.02138938521966338,
+      "decode_time": 4.829539609141648,
+      "tokens_per_sec": 52.80006390615793,
+      "ms_per_token": 18.939371016241758,
+      "category": "creative"
+    },
+    {
+      "prompt": "Compose a poem about the changing seasons.",
+      "output_text": "As summer's warmth begins to fade,\nThe earth awakens from its shade,\nThe trees regain their vibrant hue,\nAnd winter's chill begins anew.\n\nThe leaves, a fiery blaze, ablaze,\nAs autumn's palette paints the days,\nWith crimson, gold, and amber bright,\nA fleeting beauty, lost in night.\n\nBut winter's icy grip takes hold,\nAnd earth and sky grow cold and old,\nThe trees stand bare, their limbs outstretched,\nTheir branches creaking, frozen, and beset.\n\nThe snowflakes fall, a gentle hush,\nA soft caress, a peaceful rush,\nThe world is muffled, still and gray,\nAs winter's silence holds its sway.\n\nBut even as the cold prevails,\nA hint of spring's awakening gales,\nA whispered promise of life to come,\nA stir within the frozen drum.\n\nThe earth awakens, slow and cold,\nAs winter's grip begins to unfold,\nThe trees regain their vibrant hue,\nAnd summer's warmth begins anew.\n\nThe cycle turns, a never-ending spin,\nA dance of seasons, life within,\nEach one a chapter in the earth's grand tale,\nA story of life, of growth, of hail.",
+      "prompt_len": 19,
+      "tokens_generated": 246,
+      "prefill_time": 0.0212745382450521,
+      "decode_time": 4.635928038042039,
+      "tokens_per_sec": 52.8481024704332,
+      "ms_per_token": 18.922155257314444,
+      "category": "creative"
+    },
+    {
+      "prompt": "Write a Python function that computes the nth Fibonacci number using memoization.",
+      "output_text": "Here is an example of a Python function that computes the nth Fibonacci number using memoization:\n```\ndef fibonacci(n, memo={}):\n    if n <= 1:\n        return n\n    elif n in memo:\n        return memo[n]\n    else:\n        result = fibonacci(n-1, memo) + fibonacci(n-2, memo)\n        memo[n] = result\n        return result\n```\nThis function uses a dictionary `memo` to store the results of previously computed Fibonacci numbers. If the Fibonacci number for a given `n` is already in the dictionary, the function returns the stored value instead of recomputing it. If the Fibonacci number is not in the dictionary, the function computes it recursively and stores the result in the dictionary for future use.\n\nYou can test this function with a large value of `n` to see how memoization improves the performance:\n```\n>>> fibonacci(30)\n832040\n```\nThis should be much faster than computing the Fibonacci number recursively without memoization.\n\nNote that this function has a time complexity of O(n) and a space complexity of O(n) due to the use of the memoization dictionary.",
+      "prompt_len": 25,
+      "tokens_generated": 236,
+      "prefill_time": 0.02142445184290409,
+      "decode_time": 4.453931437805295,
+      "tokens_per_sec": 52.762374832558685,
+      "ms_per_token": 18.95289973534168,
+      "category": "code"
+    },
+    {
+      "prompt": "Show, with code, how to reverse a singly linked list in Python.",
+      "output_text": "Here is an example of how to reverse a singly linked list in Python:\n```\nclass Node:\n    def __init__(self, value):\n        self.value = value\n        self.next = None\n\nclass LinkedList:\n    def __init__(self):\n        self.head = None\n\n    def append(self, value):\n        if not self.head:\n            self.head = Node(value)\n        else:\n            current = self.head\n            while current.next:\n                current = current.next\n            current.next = Node(value)\n\n    def reverse(self):\n        prev = None\n        current = self.head\n        while current:\n            next_node = current.next\n            current.next = prev\n            prev = current\n            current = next_node\n        self.head = prev\n\n    def print_list(self):\n        current = self.head\n        while current:\n            print(current.value, end=\" \")\n            current = current.next\n        print()\n\n# Create a linked list and add some nodes\nll = LinkedList()\nll.append(1)\nll.append(2)\nll.append(3)\nll.append(4)\nll.append(5)\n\n# Print the original list\nprint(\"Original list:\")\nll.print_list()  # Output: 1 2 3 4 5\n\n",
+      "prompt_len": 26,
+      "tokens_generated": 256,
+      "prefill_time": 0.021403240971267223,
+      "decode_time": 4.829541814979166,
+      "tokens_per_sec": 52.80003979033776,
+      "ms_per_token": 18.939379666584966,
+      "category": "code"
+    },
+    {
+      "prompt": "If a train leaves Chicago at 3pm going 60mph and another leaves New York at 4pm going 80mph, when do they meet? Cities are 790 miles apart.",
+      "output_text": "A classic problem!\n\nLet's break it down step by step:\n\n1. The train leaving Chicago is going 60 mph, and the distance between Chicago and New York is 790 miles. To find out how long it takes for this train to cover this distance, we can use the formula:\n\nTime = Distance / Speed\n\nTime = 790 miles / 60 mph = 13.17 hours\n\nSo, the train leaving Chicago will take approximately 13.17 hours to reach New York.\n\n2. The train leaving New York is going 80 mph, which is faster than the first train. However, it starts 1 hour later, at 4 pm. We need to add this hour to the total time it takes for the train to cover the distance:\n\nTime = 790 miles / 80 mph = 9.88 hours\nAdd 1 hour to account for the delayed start: 9.88 hours + 1 hour = 10.88 hours\n\nSo, the train leaving New York will take approximately 10.88 hours to cover the distance.\n\n3. To find out when the trains meet, we need to find the midpoint of their journey. Since the trains are moving towards each other, we'll assume they meet at the midpoint.\n\n",
+      "prompt_len": 50,
+      "tokens_generated": 256,
+      "prefill_time": 0.021897024009376764,
+      "decode_time": 4.839148035738617,
+      "tokens_per_sec": 52.695226125910075,
+      "ms_per_token": 18.977051120543596,
+      "category": "reasoning"
+    },
+    {
+      "prompt": "Give three arguments for and against a universal basic income.",
+      "output_text": "Here are three arguments for and against a universal basic income (UBI):\n\n**Arguments For a Universal Basic Income:**\n\n1. **Reduces Poverty and Inequality**: A UBI would provide a safety net for the most vulnerable members of society, ensuring that everyone has a minimum standard of living. This would help to reduce poverty and inequality, as everyone would have access to a basic income regardless of their employment status or other factors.\n2. **Frees People to Pursue Creative and Entrepreneurial Ventures**: With a UBI, people would have the financial security to pursue creative and entrepreneurial endeavors, without the burden of a 9-to-5 job. This could lead to a surge in innovation and entrepreneurship, as people are free to explore their passions and interests without worrying about making ends meet.\n3. **Simplifies the Welfare System**: A UBI would consolidate and simplify the existing welfare system, which is often complicated and bureaucratic. Instead of applying for multiple benefits and navigating a complex system, individuals would receive a single, unconditional payment each month.\n\n**Arguments Against a Universal Basic Income:**\n\n1. **Cost**: Implementing a UBI would be expensive, and the cost would likely be significant. In the United States, for example, it's estimated that a",
+      "prompt_len": 22,
+      "tokens_generated": 256,
+      "prefill_time": 0.021393942646682262,
+      "decode_time": 4.830653015058488,
+      "tokens_per_sec": 52.78789414290245,
+      "ms_per_token": 18.943737313954852,
+      "category": "reasoning"
+    }
+  ]
+}
