@@ -56,13 +56,13 @@ def main():
     # tokens as input during generation.
     messages = [{"role": "user", "content": prompt}]
     ct_target = t_target.apply_chat_template(
-        messages, tokenize=True, add_generation_prompt=True, return_tensors="pt"
+        messages, tokenize=True, add_generation_prompt=True
     )
     ct_draft = t_draft.apply_chat_template(
-        messages, tokenize=True, add_generation_prompt=True, return_tensors="pt"
+        messages, tokenize=True, add_generation_prompt=True
     )
-    print(f"[note] chat templates differ (target: {ct_target.shape[1]} toks, "
-          f"draft: {ct_draft.shape[1]} toks) — safe, we only use target's template")
+    print(f"[note] chat templates differ (target: {len(ct_target)} toks, "
+          f"draft: {len(ct_draft)} toks) — safe, we only use target's template")
 
     print("\nTokenizers are compatible. Safe to proceed.")
 
