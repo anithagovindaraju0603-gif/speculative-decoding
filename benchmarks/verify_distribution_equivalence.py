@@ -15,7 +15,7 @@ import torch.nn.functional as F
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "src"))
-from models import load_pair
+from model import load_pair
 from baseline import autoregressive_decode
 from spec_decode_vanilla import speculative_decode
 
