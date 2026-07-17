@@ -1,0 +1,62 @@
+"""
+Verifies tokenizer compatibility between target and draft models.
+Speculative decoding requires vocabulary alignment — a draft-produced token id
+must refer to the same string under the target's vocab, or the rejection
+sampling framework silently corrupts outputs.
+"""
+
+from transformers import AutoTokenizer
+
+TARGET = "meta-llama/Meta-Llama-3-8B-Instruct"
+DRAFT = "meta-llama/Llama-3.2-1B-Instruct"
+
+
+def main():
+    t_target = AutoTokenizer.from_pretrained(TARGET)
+    t_draft = AutoTokenizer.from_pretrained(DRAFT)
+
+    # 1. Vocab dict equality
+    v_target = t_target.get_vocab()
+    v_draft = t_draft.get_vocab()
+    assert v_target == v_draft, (
+        f"Vocab mismatch: |target|={len(v_target)}, |draft|={len(v_draft)}, "
+        f"symmetric diff size={len(set(v_target.items()) ^ set(v_draft.items()))}"
+    )
+    print(f"[ok] vocab identical ({len(v_target)} tokens)")
+
+    # 2. Special tokens — the ones our EOS handler cares about
+    for name in ["bos_token_id", "eos_token_id", "pad_token_id"]:
+        a, b = getattr(t_target, name), getattr(t_draft, name)
+        assert a == b, f"{name} mismatch: target={a}, draft={b}"
+        print(f"[ok] {name} = {a}")
+
+    eot_target = t_target.convert_tokens_to_ids("<|eot_id|>")
+    eot_draft = t_draft.convert_tokens_to_ids("<|eot_id|>")
+    assert eot_target == eot_draft, (
+        f"<|eot_id|> mismatch: target={eot_target}, draft={eot_draft}"
+    )
+    print(f"[ok] <|eot_id|> = {eot_target}")
+
+    # 3. Round-trip on a real prompt
+    prompt = "Explain speculative decoding in one paragraph."
+    ids_target = t_target(prompt, return_tensors="pt").input_ids
+    ids_draft = t_draft(prompt, return_tensors="pt").input_ids
+    assert (ids_target == ids_draft).all(), "Encoded ids differ"
+    print(f"[ok] round-trip encoding matches ({ids_target.shape[1]} tokens)")
+
+    # 4. Chat template round-trip — spec decode will use this
+    messages = [{"role": "user", "content": prompt}]
+    ct_target = t_target.apply_chat_template(
+        messages, tokenize=True, add_generation_prompt=True, return_tensors="pt"
+    )
+    ct_draft = t_draft.apply_chat_template(
+        messages, tokenize=True, add_generation_prompt=True, return_tensors="pt"
+    )
+    assert (ct_target == ct_draft).all(), "Chat template encoding differs"
+    print(f"[ok] chat template matches ({ct_target.shape[1]} tokens)")
+
+    print("\nTokenizers are compatible. Safe to proceed.")
+
+
+if __name__ == "__main__":
+    main()
