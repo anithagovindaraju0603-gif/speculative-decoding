@@ -1,6 +1,3 @@
-import sys
-sys.path.insert(0, '/workspace/speculative-decoding/src')
-
 import torch
 from models import load_pair
 from spec_decode_vanilla import speculative_decode
@@ -28,7 +25,6 @@ print("\n=== Stats ===")
 for k, v in stats.items():
     print(f"  {k}: {v}")
 
-# Quick sanity numbers
 if stats["accepted"] + stats["rejected"] > 0:
     acc_rate = stats["accepted"] / (stats["accepted"] + stats["rejected"])
     print(f"\n  acceptance rate: {acc_rate:.2%}")
