@@ -1,5 +1,5 @@
 import torch
-from models import load_pair
+from model import load_pair
 from spec_decode_vanilla import speculative_decode, _logits_to_probs
 
 target, draft, tokenizer = load_pair()
